@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace console_fantasy_battle_simulator.Models.Characters
 {
-    internal class Warrior : AbstractCharacter
+    internal class Warrior : BaseCharacter
     {
         public Warrior(string name) : base(name)
         {

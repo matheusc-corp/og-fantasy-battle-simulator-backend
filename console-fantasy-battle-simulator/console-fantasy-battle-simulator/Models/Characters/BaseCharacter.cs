@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace console_fantasy_battle_simulator.Models.Characters
 {
-    abstract class AbstractCharacter
+    abstract class BaseCharacter
     {
         public int Id { get; set; }
         public string Name { get; set; }
@@ -16,11 +16,11 @@ namespace console_fantasy_battle_simulator.Models.Characters
         public int PhysicalAttack { get; set; }
         public int MagicAttack { get; set; }
         public int PhysicalDefense { get; set; }
-        public int MagicDenfense { get; set; }
+        public int MagicDefense { get; set; }
         public int CriticalRate { get; set; }
         public int LastHit { get; set; }
 
-        public AbstractCharacter(string name)
+        public BaseCharacter(string name)
         {
             Name = name;
             HealthPoints = 500;
@@ -28,7 +28,7 @@ namespace console_fantasy_battle_simulator.Models.Characters
             PhysicalAttack = 100;
             MagicAttack = 50;
             PhysicalDefense = 20;
-            MagicDenfense = 15;
+            MagicDefense = 15;
             CriticalRate = 1;
         }
 
@@ -67,8 +67,23 @@ namespace console_fantasy_battle_simulator.Models.Characters
 
         public void TakeMAtk(int damage)
         {
-            damage -= MagicDenfense;
+            damage -= MagicDefense;
             HealthPoints -= damage;
+        }
+
+        public override string ToString()
+        {
+            string msg =
+$@"Name: {Name}
+HP: {HealthPoints}
+MP: {ManaPoints}
+Physica Attack: {PhysicalAttack}
+Magic Attack: {MagicAttack}
+Physica Defense: {PhysicalDefense}
+Magic Defense: {MagicDefense}
+Critical rate: {CriticalRate}";
+
+            return msg;
         }
     }
 }

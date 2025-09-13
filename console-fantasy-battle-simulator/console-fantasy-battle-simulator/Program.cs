@@ -1,2 +1,4 @@
-﻿// See https://aka.ms/new-console-template for more information
-Console.WriteLine("Hello, World!");
+﻿using console_fantasy_battle_simulator.Controllers;
+
+Menu menu = new Menu();
+menu.MainMenu();
