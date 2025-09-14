@@ -1,4 +1,4 @@
 ﻿using console_fantasy_battle_simulator.Controllers;
 
-Menu menu = new Menu();
+MenuController menu = new MenuController();
 menu.MainMenu();

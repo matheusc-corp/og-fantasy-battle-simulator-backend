@@ -43,6 +43,13 @@ namespace console_fantasy_battle_simulator.Models.Characters
         {
             LastHit = CriticalDamage(CriticalRate, MagicAttack);
 
+            if (ManaPoints <= 0)
+            {
+                Console.WriteLine($"{Name} doesn't have enough mana.");
+                return 0;
+            }
+
+            ManaPoints -= 20;
             return LastHit;
         }
 
@@ -60,15 +67,40 @@ namespace console_fantasy_battle_simulator.Models.Characters
             return baseDamage;
         }
 
-        public void TakePAtk(int damage) {
-            damage -= PhysicalDefense;
-            HealthPoints -= damage;
+        public void TakePAtk(int damage)
+        {
+            Random random = new Random();
+            damage = random.Next(0, damage);
+
+            if (damage < PhysicalDefense)
+            {
+                Console.WriteLine($"{Name} dodge the attack!");
+            }
+            else
+            {
+                damage -= PhysicalDefense;
+                HealthPoints -= damage;
+
+                Console.WriteLine($"{Name} received {damage} physical points of damage. HP dropped to {HealthPoints}");
+            }
         }
 
         public void TakeMAtk(int damage)
         {
-            damage -= MagicDefense;
-            HealthPoints -= damage;
+            Random random = new Random();
+            damage = random.Next(0, damage);
+
+            if (damage < MagicDefense)
+            {
+                Console.WriteLine($"{Name} dodge the attack!");
+            }
+            else
+            {
+                damage -= MagicDefense;
+                HealthPoints -= damage;
+
+                Console.WriteLine($"{Name} received {damage} magic points of damage. HP dropped to {HealthPoints}");
+            }
         }
 
         public override string ToString()
